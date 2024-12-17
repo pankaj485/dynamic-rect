@@ -12,8 +12,6 @@ export class RectComponent {
   rectConfig = input.required<ReactangleConfig>();
   reset = output<void>();
 
-  // Todo: Implement custom two-way binding
-
   onReset() {
     this.reset.emit();
   }

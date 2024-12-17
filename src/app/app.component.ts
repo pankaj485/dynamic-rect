@@ -10,14 +10,18 @@ import { ReactangleConfig } from './rect/rect';
   imports: [RectComponent, FormsModule],
 })
 export class AppComponent {
-  defaultConfig: ReactangleConfig = {
-    height: 100,
-    width: 100,
-  };
+  defaultHeight: number = 100;
+  defaultWidth: number = 100;
 
-  rectSize = signal<ReactangleConfig>(this.defaultConfig);
+  rectSize = signal<ReactangleConfig>({
+    height: this.defaultHeight,
+    width: this.defaultWidth,
+  });
 
   onRectangeReset() {
-    this.rectSize.set(this.defaultConfig);
+    this.rectSize.set({
+      height: this.defaultHeight,
+      width: this.defaultWidth,
+    });
   }
 }
