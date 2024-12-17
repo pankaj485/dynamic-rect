@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RectComponent } from './rect/rect.component';
 import { FormsModule } from '@angular/forms';
+import { ReactangleConfig } from './rect/rect';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,14 @@ import { FormsModule } from '@angular/forms';
   imports: [RectComponent, FormsModule],
 })
 export class AppComponent {
-  rectSize = {
-    width: '100',
-    height: '100',
+  defaultConfig: ReactangleConfig = {
+    height: 100,
+    width: 100,
   };
+
+  rectSize = signal<ReactangleConfig>(this.defaultConfig);
+
+  onRectangeReset() {
+    this.rectSize.set(this.defaultConfig);
+  }
 }
