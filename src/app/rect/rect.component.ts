@@ -1,4 +1,4 @@
-import { Component, Input, input, output } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { ReactangleConfig } from './rect';
 
 @Component({
@@ -9,13 +9,12 @@ import { ReactangleConfig } from './rect';
   styleUrl: './rect.component.css',
 })
 export class RectComponent {
-  rectConfig = input.required<ReactangleConfig>();
-  rectConfigChange = output<ReactangleConfig>();
+  rectConfig = model.required<ReactangleConfig>();
 
   onReset() {
-    this.rectConfigChange.emit({
-      height: 200,
-      width: 200,
+    this.rectConfig.set({
+      height: 100,
+      width: 100,
     });
   }
 }
