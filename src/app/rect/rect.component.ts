@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, Input, input, output } from '@angular/core';
 import { ReactangleConfig } from './rect';
 
 @Component({
@@ -10,9 +10,12 @@ import { ReactangleConfig } from './rect';
 })
 export class RectComponent {
   rectConfig = input.required<ReactangleConfig>();
-  reset = output<void>();
+  rectConfigChange = output<ReactangleConfig>();
 
   onReset() {
-    this.reset.emit();
+    this.rectConfigChange.emit({
+      height: 200,
+      width: 200,
+    });
   }
 }
